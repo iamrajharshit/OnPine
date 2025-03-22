@@ -28,7 +28,7 @@ CHUNK_OVERLAP = 200
 
 
 
-def perform_rag(query: str, top_k: int = 5) -> str:
+def perform_rag(query: str, top_k: int = 40) -> str: #top_k 5,10,40
     """Perform RAG by retrieving relevant chunks and generating a response with Gemini."""
     # Generate embedding for the query
     query_result = genai.embed_content(
@@ -67,7 +67,7 @@ def perform_rag(query: str, top_k: int = 5) -> str:
     """
     
     # Generate response with Gemini
-    model = genai.GenerativeModel('gemini-1.5-pro')
+    model = genai.GenerativeModel('gemini-2.0-flash-lite')
     response = model.generate_content(prompt)
     
     return response.text
